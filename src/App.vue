@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import Dashboard from './components/Dashboard'
 
 export default {
@@ -14,7 +13,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

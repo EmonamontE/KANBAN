@@ -8,21 +8,15 @@ export default new Vuex.Store({
     onHoldState: [
       {
         id: 1,
-        avatar: 'https://s3.amazonaws.com/vuetify-docs/images/lists/1.jpg',
-        title: 'Brunch this life?',
-        subtitle: 'Subtitle 1'
+        text: 'First ToDoshka'
       },
       {
         id: 2,
-        avatar: 'https://s3.amazonaws.com/vuetify-docs/images/lists/2.jpg',
-        title: 'Winter Lunch',
-        subtitle: 'Subtitle 2'
+        text: 'Second ToDoshka'
       },
       {
         id: 3,
-        avatar: 'https://s3.amazonaws.com/vuetify-docs/images/lists/3.jpg',
-        title: 'Oui oui',
-        subtitle: 'Subtitle 3'
+        text: 'Third ToDoshka'
       }
     ],
     inProgressState: [],

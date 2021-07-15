@@ -1,5 +1,5 @@
 <template>
-  <v-flex xs2 class="elevation-4 pa-3 ma-2">
+  <v-flex xs3 class="elevation-4 pa-3 ma-2">
     <v-list three-line dark>
       <v-subheader class="amber accent-2">
         NEEDS-REVIEW
@@ -8,8 +8,8 @@
         <template v-for="item in items3">
           <v-list-item :key="item.id">
             <v-list-item-content>
-              <v-list-item-title v-text="item.title"></v-list-item-title>
-              <v-list-item-subtitle v-text="item.subtitle"></v-list-item-subtitle>
+              <v-list-item-title v-text="item.id"></v-list-item-title>
+              <v-list-item-subtitle v-text="item.text"></v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </template>
