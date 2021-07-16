@@ -43,6 +43,38 @@ export default new Vuex.Store({
         id: this.state.currentID,
         text: payload
       })
+    },
+
+    deleteCaseFromOnHoldColumn (state, payload) {
+      const currentArray = state.onHoldState
+      const filteredArray = currentArray.filter((item) => item !== payload)
+      const index = currentArray.length
+      state.onHoldState.splice(0, index)
+      filteredArray.map((item) => state.onHoldState.push(item))
+    },
+
+    deleteCaseFromInProgressColumn (state, payload) {
+      const currentArray = state.inProgressState
+      const filteredArray = currentArray.filter((item) => item !== payload)
+      const index = currentArray.length
+      state.inProgressState.splice(0, index)
+      filteredArray.map((item) => state.inProgressState.push(item))
+    },
+
+    deleteCaseFromNeedsReviewColumn (state, payload) {
+      const currentArray = state.needsReviewState
+      const filteredArray = currentArray.filter((item) => item !== payload)
+      const index = currentArray.length
+      state.needsReviewState.splice(0, index)
+      filteredArray.map((item) => state.needsReviewState.push(item))
+    },
+
+    deleteCaseFromApprovedColumn (state, payload) {
+      const currentArray = state.approvedState
+      const filteredArray = currentArray.filter((item) => item !== payload)
+      const index = currentArray.length
+      state.approvedState.splice(0, index)
+      filteredArray.map((item) => state.approvedState.push(item))
     }
   },
 

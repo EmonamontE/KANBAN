@@ -6,11 +6,17 @@
       </v-subheader>
       <draggable v-model="onHoldList" :options="{group:'todos'}" style="min-height: 50px">
         <template v-for="item in onHoldList">
-          <v-list-item :key="item.id">
+          <v-list-item :key="item.id" justify-center>
             <v-list-item-content>
               <v-list-item-title v-text="item.id"></v-list-item-title>
               <v-list-item-subtitle v-text="item.text"></v-list-item-subtitle>
             </v-list-item-content>
+            <v-btn
+              icon
+              @click="deleteCase(item)"
+            >
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
           </v-list-item>
         </template>
       </draggable>
@@ -66,6 +72,10 @@ export default {
       this.$store.commit('incrementCurrentId')
       this.drawer = !this.drawer
       this.onHoldCase = ''
+    },
+
+    deleteCase (item) {
+      this.$store.commit('deleteCaseFromOnHoldColumn', item)
     }
   },
 

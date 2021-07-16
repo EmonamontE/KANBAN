@@ -11,6 +11,12 @@
               <v-list-item-title v-text="item.id"></v-list-item-title>
               <v-list-item-subtitle v-text="item.text"></v-list-item-subtitle>
             </v-list-item-content>
+            <v-btn
+              icon
+              @click="deleteCase(item)"
+            >
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
           </v-list-item>
         </template>
       </draggable>
@@ -66,6 +72,10 @@ export default {
       this.$store.commit('incrementCurrentId')
       this.drawer = !this.drawer
       this.inProgressCase = ''
+    },
+
+    deleteCase (item) {
+      this.$store.commit('deleteCaseFromInProgressColumn', item)
     }
   },
 

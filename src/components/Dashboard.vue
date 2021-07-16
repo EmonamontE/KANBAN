@@ -1,5 +1,5 @@
 <template>
-  <v-content class="backgroundColor">
+  <v-main class="backgroundColor">
     <v-container fluid>
       <v-layout align-start justify-center>
         <OnHold />
@@ -8,7 +8,7 @@
         <Approved />
       </v-layout>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
