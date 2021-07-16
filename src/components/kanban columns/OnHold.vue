@@ -4,8 +4,8 @@
       <v-subheader class="deep-orange accent-2">
         ON-HOLD
       </v-subheader>
-      <draggable v-model="items1" :options="{group:'todos'}" @update="onUpdate" style="min-height: 50px">
-        <template v-for="item in items1">
+      <draggable v-model="onHoldList" :options="{group:'todos'}" style="min-height: 50px">
+        <template v-for="item in onHoldList">
           <v-list-item :key="item.id">
             <v-list-item-content>
               <v-list-item-title v-text="item.id"></v-list-item-title>
@@ -14,29 +14,29 @@
           </v-list-item>
         </template>
       </draggable>
-      <v-navigation-drawer
-        v-model="drawer"
-        class="ml-5"
-        width=90%
-        floating
-      >
+      <div v-if="drawer">
         <v-text-field
-          placeholder="Ввести заголовок для этой строчки"
-          filled
+          placeholder="Ввести заголовок для этой карточки"
+          v-model="onHoldCase"
+          rounded
         >
         </v-text-field>
-        <v-btn class="ma-4">Добавить карточку</v-btn>
+        <v-btn
+          class="ma-4"
+          @click="addCase(onHoldCase)">Добавить карточку</v-btn>
         <v-btn
           icon
         >
           <v-icon
             left
             class="ml-2"
+            @click="drawer = !drawer"
           >mdi-close</v-icon>
         </v-btn>
-      </v-navigation-drawer>
+      </div>
     </v-list>
     <v-btn
+      v-if="!drawer"
       depressed
       color="#424242"
       class="grey--text pl-0 mt-4"
@@ -54,13 +54,19 @@ import draggable from 'vuedraggable'
 export default {
   data () {
     return {
+      onHoldCase: '',
       drawer: false,
-      items1: this.$store.getters.onHoldList
+      onHoldList: this.$store.getters.onHoldList
     }
   },
 
   methods: {
-    awawa () {}
+    addCase (value) {
+      this.$store.commit('addCaseToOnHoldColumn', value)
+      this.$store.commit('incrementCurrentId')
+      this.drawer = !this.drawer
+      this.onHoldCase = ''
+    }
   },
 
   components: {

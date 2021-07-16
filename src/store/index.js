@@ -5,23 +5,45 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    onHoldState: [
-      {
-        id: 1,
-        text: 'First ToDoshka'
-      },
-      {
-        id: 2,
-        text: 'Second ToDoshka'
-      },
-      {
-        id: 3,
-        text: 'Third ToDoshka'
-      }
-    ],
+    currentID: 1,
+    onHoldState: [],
     inProgressState: [],
     needsReviewState: [],
     approvedState: []
+  },
+
+  mutations: {
+    incrementCurrentId (state) {
+      state.currentID = this.state.currentID + 1
+    },
+
+    addCaseToOnHoldColumn (state, payload) {
+      state.onHoldState.push({
+        id: this.state.currentID,
+        text: payload
+      })
+    },
+
+    addCaseToInProgressColumn (state, payload) {
+      state.inProgressState.push({
+        id: this.state.currentID,
+        text: payload
+      })
+    },
+
+    addCaseToNeedsReviewColumn (state, payload) {
+      state.needsReviewState.push({
+        id: this.state.currentID,
+        text: payload
+      })
+    },
+
+    addCaseToApprovedColumn (state, payload) {
+      state.approvedState.push({
+        id: this.state.currentID,
+        text: payload
+      })
+    }
   },
 
   getters: {
