@@ -2,13 +2,17 @@
   <v-flex xs3 class="elevation-4 pa-3 ma-2">
     <v-list three-line dark>
       <v-subheader class="blue darken-2">
-        IN-PROGRESS
+        IN-PROGRESS ({{ inProgressList.length }})
       </v-subheader>
-      <draggable v-model="inProgressList" :options="{group:'todos'}" style="min-height: 50px">
+      <draggable v-model="inProgressList" :options="{group:'todos'}">
         <template v-for="item in inProgressList">
-          <v-list-item :key="item.id">
+          <v-list-item
+            :key="item.id"
+            justify-center
+            class="grey darken-2 mt-2"
+          >
             <v-list-item-content>
-              <v-list-item-title v-text="item.id"></v-list-item-title>
+              <v-list-item-title>id: {{ item.id }}</v-list-item-title>
               <v-list-item-subtitle v-text="item.text"></v-list-item-subtitle>
             </v-list-item-content>
             <v-btn
